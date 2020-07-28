@@ -30,19 +30,26 @@ void lage_rho() {
 /**********====================########################=================***********/
 
 
+
+int window(string s1, string s2)
+{
+	int len1 = s1.size();
+	int len2 = s2.size();
+
+	if (len2 > len1) return ;
+	int cn1[SIZE] = {0};
+	int cnt2 = [SIZE] = {0};
+
+	for (int i = 0; i < len2; i++)
+	{
+		cnt2[s2[i]]++;
+	}
+}
+
+
 void solve()
 {
-	int n; cin >> n;
 
-	string s(200, 'a');
-	pr(s);
-
-	fl(i, 0, n)
-	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
-	}
 
 }
 

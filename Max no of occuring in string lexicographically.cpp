@@ -30,26 +30,42 @@ void lage_rho() {
 /**********====================########################=================***********/
 
 
+void lexi(string s)
+{
+	int max = INT_MIN;
+	char res;
+	int cnt[26] = {0};
+	fl(i, 0, s.size())
+	{
+		cnt[s[i] - 'a']++;
+		if (max < cnt[i])
+		{
+			max = cnt[i];
+			res = (char)(i + 'a');
+		}
+	}
+	// for (int i = 0; i < 26; i++)
+	// {
+	// 	if (max < cnt[i])
+	// 	{
+	// 		max = cnt[i];
+	// 		res = (char)(i + 'a');
+	// 	}
+	// }
+	cout << max << res;
+}
+
 void solve()
 {
-	int n; cin >> n;
-
-	string s(200, 'a');
-	pr(s);
-
-	fl(i, 0, n)
-	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
-	}
+	string s; cin >> s;
+	lexi(s);
 
 }
 
 int32_t main()
 {
 	lage_rho();
-	test
+	// test
 	solve();
 	return 0;
 }

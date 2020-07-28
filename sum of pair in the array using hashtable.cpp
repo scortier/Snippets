@@ -29,27 +29,38 @@ void lage_rho() {
 }
 /**********====================########################=================***********/
 
-
-void solve()
+void sum(int a[], int n, int x)
 {
-	int n; cin >> n;
-
-	string s(200, 'a');
-	pr(s);
-
+	int cnt[n] = {0};
+	int flag = 0;
 	fl(i, 0, n)
 	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
+		cnt[a[i]]++;
 	}
+	for (int i = 0; i < n; i++)
+	{
+		int ct = (x - a[i]);
+		cnt[a[i]]--;
+		if (cnt[ct]) flag = 1;
+	}
+	if (flag) pr("yes");
+	else pr("no");
 
+
+
+}
+void solve()
+{
+	int n, x; cin >> n >> x;
+	int a[n];
+	fl(i, 0, n) cin >> a[i];
+	sum(a, n, x);
 }
 
 int32_t main()
 {
 	lage_rho();
-	test
+	// test
 	solve();
 	return 0;
 }

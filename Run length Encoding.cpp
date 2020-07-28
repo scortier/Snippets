@@ -28,28 +28,33 @@ void lage_rho() {
 #endif
 }
 /**********====================########################=================***********/
+void rle(string s)
+{
+	int n = s.size();
+	for (int i = 0; i < n; i++)
+	{
+		int cnt = 1;
+		while (i < n - 1 and s[i] == s[i + 1])
+		{
+			cnt++;
+			i++;
+		}
+		cout << s[i] << cnt;
+	}
 
+}
 
 void solve()
 {
-	int n; cin >> n;
-
-	string s(200, 'a');
-	pr(s);
-
-	fl(i, 0, n)
-	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
-	}
+	string s; cin >> s;
+	rle(s);
 
 }
 
 int32_t main()
 {
 	lage_rho();
-	test
+	// test
 	solve();
 	return 0;
 }

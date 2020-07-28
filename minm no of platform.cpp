@@ -29,20 +29,12 @@ void lage_rho() {
 }
 /**********====================########################=================***********/
 
-
+void
 void solve()
 {
 	int n; cin >> n;
-
-	string s(200, 'a');
-	pr(s);
-
-	fl(i, 0, n)
-	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
-	}
+	int a[n];
+	fl(i, 0, n) cin >> a[i];
 
 }
 

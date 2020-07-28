@@ -29,27 +29,32 @@ void lage_rho() {
 }
 /**********====================########################=================***********/
 
-
-void solve()
-{
-	int n; cin >> n;
-
-	string s(200, 'a');
-	pr(s);
-
-	fl(i, 0, n)
+int fact(ll n)
+{	ll w = 0;
+	while (n > 1)
 	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
+		ll y = (n / 2);
+		ll z = n - y;
+		w += y * z;
+		n = n / 2;
+
 	}
 
+	return w;
+}
+void solve()
+{
+
+	ll n, x; cin >> n >> x;
+	ll p = fact(n);
+	if (p / 2 <= x) pr("1");
+	else pr("0");
 }
 
 int32_t main()
 {
 	lage_rho();
-	test
+	// test
 	solve();
 	return 0;
 }

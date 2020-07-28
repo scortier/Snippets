@@ -28,28 +28,35 @@ void lage_rho() {
 #endif
 }
 /**********====================########################=================***********/
+//JO PEHLE JYADA BAAR OCCUR KAREGA UUSE PRINT KIYA HAI.
 
+#define SIZE 256
+void repeat(string s)
+{	int max = INT_MIN; char res;
+	int cnt[SIZE] = {0};
+	for (int i = 0; i < s.size(); i++)
+	{
+		cnt[s[i]]++;
+		if (max < cnt[s[i]])
+		{
+			max = cnt[s[i]];
+			res = s[i];
+		}
+	}
+	cout << max << res;
 
+}
 void solve()
 {
-	int n; cin >> n;
-
-	string s(200, 'a');
-	pr(s);
-
-	fl(i, 0, n)
-	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
-	}
+	string s; cin >> s;
+	repeat(s);
 
 }
 
 int32_t main()
 {
 	lage_rho();
-	test
+	// test
 	solve();
 	return 0;
 }

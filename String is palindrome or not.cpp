@@ -28,28 +28,30 @@ void lage_rho() {
 #endif
 }
 /**********====================########################=================***********/
-
+void isPalindrome(string s)
+{
+	int l = 0, h = s.size() - 1;
+	while (h > l)
+	{
+		if (s[l++] != s[h++]) {
+			pr("naaahhhhhh");
+			return;
+		}
+	}
+	pr("doneeeeee");
+}
 
 void solve()
 {
-	int n; cin >> n;
-
-	string s(200, 'a');
-	pr(s);
-
-	fl(i, 0, n)
-	{
-		int u; cin >> u;
-		s[u] = s[u] == 'a' ? 'b' : 'a';
-		pr(s);
-	}
+	string s; cin >> s;
+	isPalindrome(s);
 
 }
 
 int32_t main()
 {
 	lage_rho();
-	test
+	// test
 	solve();
 	return 0;
 }
