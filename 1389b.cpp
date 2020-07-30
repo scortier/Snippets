@@ -14,12 +14,10 @@ using namespace std;
 #define PI 			    acos(-1.0)
 #define assign(x,val)   memset(x,val,sizeof(x))
 #define prec(val, dig)  fixed << setprecision(dig) << val
-#define vi   		    vector < int >
 #define pi 			    pair < int , int >
 #define pr(gg)          cout<<gg<<endl
 #define mk(arr,n,type)  type *arr=new type[n];
-const int maxm = 2e6 + 10;
-
+#define vi   		    vector < int >
 void lage_rho() {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #ifndef ONLINE_JUDGE
@@ -27,52 +25,43 @@ void lage_rho() {
 	freopen("output.txt", "w", stdout);
 #endif
 }
-/**********====================########################=================***********/
+/**********=============########################============***********/
 
-//TC:O(N) SC:O(N)
-void re1(int a[], int n)
+
+void solve()
 {
-	int flag = 1;
-	int temp[n];
-	int s = 0; int l = n - 1
-
-	                   fl(i, 0, n)
-	{
-		if (flag)
-			temp[i] = a[l--];
-		else
-			temp[i] = a[s++];
-		flag = !flag;
-	}
-
+	ll n, k, z;
+	cin >> n >> k >> z;
+	vi a(n);
 	fl(i, 0, n)
-	a[i] = temp[i];
-}
+	cin >> a[i];
 
+	bool left = false;
+	ll i = 1;
+	ll sum = a[0];
+	ll j = max_element(a.begin(), a.begin() + k) - a.begin();
 
-//TC:O(N) SC:O(1)
-void re2(int a[], int n) {
-	int max_idx = n - 1, min_idx = 0;
-	int max_ele = a[n - 1] + 1;
-	fl(i, 0, n)
+	while (i < n && k)
 	{
-		if (i % 2 == 0)
+
+		sum += a[i];
+		k--;
+
+		if (i + 1 < n && a[i + 1] < a[i - 1]  && i - 1 == j)
 		{
-			a[i] += (a[max_idx] % max_ele) * max_ele;
-			max_idx--;
+			i--;
+			z--;
+			left = true;
 		}
 		else {
-			a[i] += (a[min_idx] % max_ele) * max_ele;
-			min_idx++;
+			i++;
+			left = false;
 		}
 	}
-	fl(i, 0, n)
-	cout << a[i] / max_ele;
 
-
+	cout << sum << endl;
 
 }
-
 
 int32_t main()
 {

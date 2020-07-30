@@ -29,50 +29,41 @@ void lage_rho() {
 }
 /**********====================########################=================***********/
 
-//TC:O(N) SC:O(N)
-void re1(int a[], int n)
+//TC:O(N) SC:O(1)
+//IT IS WRONG IF A NO CAME 3 TIMES IT WILL PRINT TWICW IT.
+void dup(int a[], int n)
 {
-	int flag = 1;
-	int temp[n];
-	int s = 0; int l = n - 1
-
-	                   fl(i, 0, n)
-	{
-		if (flag)
-			temp[i] = a[l--];
-		else
-			temp[i] = a[s++];
-		flag = !flag;
-	}
-
 	fl(i, 0, n)
-	a[i] = temp[i];
+	if (a[abs(a[i])] >= 0)
+		a[abs(a[i])] = -a[abs(a[i])];
+	cout << a[abs(a[i])] << " ";
 }
-
 
 //TC:O(N) SC:O(1)
-void re2(int a[], int n) {
-	int max_idx = n - 1, min_idx = 0;
-	int max_ele = a[n - 1] + 1;
+void deup(int a[], int n)
+{
 	fl(i, 0, n)
 	{
-		if (i % 2 == 0)
-		{
-			a[i] += (a[max_idx] % max_ele) * max_ele;
-			max_idx--;
-		}
-		else {
-			a[i] += (a[min_idx] % max_ele) * max_ele;
-			min_idx++;
-		}
+		int idx = a[i] % n;
+		a[idx] += n;
 	}
+
+	//check which value exist greater than 1.
 	fl(i, 0, n)
-	cout << a[i] / max_ele;
-
-
-
+	{
+		if (a[i] / n > 1) cout << i << " " << endl;
+	}
 }
 
+
+
+void solve()
+{
+	int n; cin >> n;
+	int a[n];
+	for (int i = 0; i < n; i++) cin >> a[i];
+
+}
 
 int32_t main()
 {

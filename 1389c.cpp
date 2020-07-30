@@ -14,11 +14,9 @@ using namespace std;
 #define PI 			    acos(-1.0)
 #define assign(x,val)   memset(x,val,sizeof(x))
 #define prec(val, dig)  fixed << setprecision(dig) << val
-#define vi   		    vector < int >
 #define pi 			    pair < int , int >
 #define pr(gg)          cout<<gg<<endl
 #define mk(arr,n,type)  type *arr=new type[n];
-const int maxm = 2e6 + 10;
 
 void lage_rho() {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -27,52 +25,55 @@ void lage_rho() {
 	freopen("output.txt", "w", stdout);
 #endif
 }
-/**********====================########################=================***********/
+/**********=============########################============***********/
 
-//TC:O(N) SC:O(N)
-void re1(int a[], int n)
+bool check_string_exist(string S)
 {
-	int flag = 1;
-	int temp[n];
-	int s = 0; int l = n - 1
+	int size = S.length();
 
-	                   fl(i, 0, n)
-	{
-		if (flag)
-			temp[i] = a[l--];
-		else
-			temp[i] = a[s++];
-		flag = !flag;
+	bool check = true;
+
+	for (int i = 0; i < size; i++) {
+
+		if (S[i] != S[(i + 2) % size]) {
+			check = false;
+			break;
+		}
 	}
 
-	fl(i, 0, n)
-	a[i] = temp[i];
+	return check;
 }
 
 
-//TC:O(N) SC:O(1)
-void re2(int a[], int n) {
-	int max_idx = n - 1, min_idx = 0;
-	int max_ele = a[n - 1] + 1;
-	fl(i, 0, n)
+
+void solve()
+{
+	string s; cin >> s;
+	int n = s.size();
+	bool flag = check_string_exist(s);
+	if (flag) pr("0");
+	else
 	{
-		if (i % 2 == 0)
+		// int r = change(s);
+		// cout << r << endl;
+
+		int cnt[256] = {0};
+		fl(i, 0, n)
 		{
-			a[i] += (a[max_idx] % max_ele) * max_ele;
-			max_idx--;
+			cnt[s[i]]++;
 		}
-		else {
-			a[i] += (a[min_idx] % max_ele) * max_ele;
-			min_idx++;
+		int max = 0;
+		fl(i, 0, n)
+		{
+			if (max < cnt[s[i]])
+				max = cnt[s[i]];
 		}
+		if (max ==  1) pr(n - 2);
+		else pr(n - max);
+
 	}
-	fl(i, 0, n)
-	cout << a[i] / max_ele;
-
-
 
 }
-
 
 int32_t main()
 {

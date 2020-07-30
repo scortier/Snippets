@@ -14,11 +14,9 @@ using namespace std;
 #define PI 			    acos(-1.0)
 #define assign(x,val)   memset(x,val,sizeof(x))
 #define prec(val, dig)  fixed << setprecision(dig) << val
-#define vi   		    vector < int >
 #define pi 			    pair < int , int >
 #define pr(gg)          cout<<gg<<endl
 #define mk(arr,n,type)  type *arr=new type[n];
-const int maxm = 2e6 + 10;
 
 void lage_rho() {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -27,52 +25,22 @@ void lage_rho() {
 	freopen("output.txt", "w", stdout);
 #endif
 }
-/**********====================########################=================***********/
+/**********=============########################============***********/
 
-//TC:O(N) SC:O(N)
-void re1(int a[], int n)
+
+void solve()
 {
-	int flag = 1;
-	int temp[n];
-	int s = 0; int l = n - 1
-
-	                   fl(i, 0, n)
+	ll l, r;
+	cin >> l >> r;
+	ll x = l;
+	ll y = 2 * l;
+	if (y <= r)
 	{
-		if (flag)
-			temp[i] = a[l--];
-		else
-			temp[i] = a[s++];
-		flag = !flag;
+		cout << x << " " << y << endl;
 	}
-
-	fl(i, 0, n)
-	a[i] = temp[i];
+	else
+		cout << -1 << " " << -1 << endl;
 }
-
-
-//TC:O(N) SC:O(1)
-void re2(int a[], int n) {
-	int max_idx = n - 1, min_idx = 0;
-	int max_ele = a[n - 1] + 1;
-	fl(i, 0, n)
-	{
-		if (i % 2 == 0)
-		{
-			a[i] += (a[max_idx] % max_ele) * max_ele;
-			max_idx--;
-		}
-		else {
-			a[i] += (a[min_idx] % max_ele) * max_ele;
-			min_idx++;
-		}
-	}
-	fl(i, 0, n)
-	cout << a[i] / max_ele;
-
-
-
-}
-
 
 int32_t main()
 {
