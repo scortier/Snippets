@@ -99,17 +99,22 @@ string LCS_TD(string x, string y, int m, int n)
 
 }
 
-
-
-int32_t main()
+void solve()
 {
-	fast();
 	memset(t, -1, sizeof(t));	//initialize whole matrix with -1.
 	string x, y;
 	cin >> x >> y;
 	int n = y.size();
 	int m = x.size();
 	cout << LCS_TD(x, y, m, n);
+}
+
+int32_t main()
+{
+	fast();
+	test
+	solve();
+
 	return 0;
 }
 
