@@ -11,8 +11,8 @@ using namespace std;
 #define s 			    second
 #define MOD 		    1000000007
 #define PI 			    acos(-1.0)
-#define assign(x,varr)   memset(x,varr,sizeof(x))
-#define prec(varr, dig)  fixed << setprecision(dig) << varr
+#define assign(x,val)   memset(x,val,sizeof(x))
+#define prec(val, dig)  fixed << setprecision(dig) << val
 #define pi 			    pair < int , int >
 #define pr(gg)          cout<<gg<<endl
 #define mk(arr,n,type)  type *arr=new type[n];
@@ -27,45 +27,21 @@ void lage_rho() {
 /**********=============########################============***********/
 
 
-// void solve()
-// {
-// 	int a, b; cin >> a >> b;
-// 	int x, y = 0;
-
-// 	for (int i = 9; i >= 0; i--)
-// 	{
-// 		if (a % i == 0) {x = (a / i); break; pr(x);}
-// 		if (b % i == 0) {y = (b / i); break; pr(y);}
-// 	}
-// 	if (x > y or x == y) cout << 1 << " " << y << endl;
-// 	else if (x < y)cout << 0 << " " << x << endl;
-
-// }
-
-
 void solve()
-{
-	ll c, r;
-	cin >> c >> r;
-	ll cc = 0, cr = 0;
-	cc = c / 9;
-	c = c % 9;
-	if (c > 0)
-		cc++;
+{	int n, d; cin >> n >> d;
+	int a[n], b[n];
+	fl(i, 0, n)
+	{
+		cin >> a[i];
+	}
+	fl(i, 0, n)
+	{
+		cin >> b[i];
+	}
 
-	cr = r / 9;
-	r = r % 9;
-	if (r > 0)
-		cr++;
-
-	if (cc >= cr)
-		cout << 1 << " " << cr << endl;
-	else
-		cout << 0 << " " << cc << endl;
+	int cnt = 0;
+	abs(b[j] - a[i]) >= d
 }
-
-
-
 
 int32_t main()
 {

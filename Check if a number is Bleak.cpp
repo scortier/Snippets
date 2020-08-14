@@ -11,8 +11,8 @@ using namespace std;
 #define s 			    second
 #define MOD 		    1000000007
 #define PI 			    acos(-1.0)
-#define assign(x,varr)   memset(x,varr,sizeof(x))
-#define prec(varr, dig)  fixed << setprecision(dig) << varr
+#define assign(x,val)   memset(x,val,sizeof(x))
+#define prec(val, dig)  fixed << setprecision(dig) << val
 #define pi 			    pair < int , int >
 #define pr(gg)          cout<<gg<<endl
 #define mk(arr,n,type)  type *arr=new type[n];
@@ -25,52 +25,54 @@ void lage_rho() {
 #endif
 }
 /**********=============########################============***********/
+int countsetbits(int x)
+{	int cnt = 0;
+	while (x)
+	{
+		x &= (x - 1);
+		cnt++;
+	}
+	return cnt;
+}
+bool isBleak(int n)
+{
+	fl(i, 0, n)
+	if (i + countsetbits(i) == n) return false;
+	return true;
+}
 
+//sec method
 
-// void solve()
-// {
-// 	int a, b; cin >> a >> b;
-// 	int x, y = 0;
-
-// 	for (int i = 9; i >= 0; i--)
-// 	{
-// 		if (a % i == 0) {x = (a / i); break; pr(x);}
-// 		if (b % i == 0) {y = (b / i); break; pr(y);}
-// 	}
-// 	if (x > y or x == y) cout << 1 << " " << y << endl;
-// 	else if (x < y)cout << 0 << " " << x << endl;
-
-// }
-
+// A function to return ceiling of log x
+// in base 2. For example, it returns 3
+// for 8 and 4 for 9.
+int ceilLog2(int x)
+{
+	int count = 0;
+	x--;
+	while (x > 0) {
+		x = x >> 1;
+		count++;
+	}
+	return count;
+}
+bool isbleak(int n)
+{
+	for (int i = n - ceilLog2(n); i < n; i++)
+		if (i + countsetbits(i) == n) return false;
+	return true;
+}
 
 void solve()
 {
-	ll c, r;
-	cin >> c >> r;
-	ll cc = 0, cr = 0;
-	cc = c / 9;
-	c = c % 9;
-	if (c > 0)
-		cc++;
-
-	cr = r / 9;
-	r = r % 9;
-	if (r > 0)
-		cr++;
-
-	if (cc >= cr)
-		cout << 1 << " " << cr << endl;
-	else
-		cout << 0 << " " << cc << endl;
+	int n; cin >> n;
+	isBleak(n) ? pr("YEs") : pr("no");
+	isbleak(n) ? pr("YEs") : pr("no");
 }
-
-
-
 
 int32_t main()
 {
 	lage_rho();
-	test
 	solve();
 	return 0;
 }
