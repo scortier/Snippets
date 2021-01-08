@@ -1,7 +1,7 @@
 
-// Problem: Fair Elections
+// Problem: Point Of Impact
 // Contest: CodeChef - January Challenge 2021 Division 3
-// URL: https://www.codechef.com/JAN21C/problems/FAIRELCT
+// URL: https://www.codechef.com/JAN21C/problems/BILLRD
 // Memory Limit: 256 MB
 // Time Limit: 1000 ms
 // Powered by CP Editor (https://github.com/cpeditor/cpeditor)
@@ -35,57 +35,27 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-/*
+
 void solve() {
-  int n, m;
-  cin >> n >> m;
-  int a[n], b[m];
-  int s1 = 0, s2 = 0;
-  fl(i, 0, n) cin >> a[i], s1 += a[i];
-  fl(i, 0, m) cin >> b[i], s2 += b[i];
-  sort(a, a + n);
-  sort(b, b + m, greater<int>());
-  int i = 0, cnt = 0;
-  fl(i, 0, n) if (s2 >= s1) {
-    s1 = s1 - a[i] + b[i];
-    s2 = s2 + a[i] - b[i];
-    i++;
-
-    cnt++;
-    // pr(s1);
-  }
-  if (s2 >= s1)
-    pr(-1);
-  else
-    pr(cnt);
-  // pr(cnt);
-}*/
-void solve() {
-  int n, m;
-  cin >> n >> m;
-  vector<int> a(n), b(m);
-
-  for (int i = 0; i < n; i++) cin >> a[i];
-
-  for (int i = 0; i < m; i++) cin >> b[i];
-  int suma = accumulate(a.begin(), a.end(), 0);
-  int sumb = accumulate(b.begin(), b.end(), 0);
-
-  sort(a.begin(), a.end());
-  sort(b.begin(), b.end(), greater<int>());
-  int coun = 0;
-  for (int i = 0; i < n; i++) {
-    if (suma <= sumb) {
-      suma = suma - a[i] + b[i];
-      sumb = sumb - b[i] + a[i];
-
-      coun++;
+  long n, k, x, y;
+  cin >> n >> k >> x >> y;
+  vector<pair<long, long>> v(4);
+  if (x == y)
+    cout << n << " " << n << endl;
+  else {
+    if (x > y) {
+      v[0] = make_pair(n, y + n - x);
+      v[1] = make_pair(y + n - x, n);
+      v[2] = make_pair(0, x - y);
+      v[3] = make_pair(x - y, 0);
+    } else {
+      v[0] = make_pair(x + n - y, n);
+      v[1] = make_pair(n, x + n - y);
+      v[2] = make_pair(y - x, 0);
+      v[3] = make_pair(0, y - x);
     }
+    cout << v[(k - 1) % 4].first << " " << v[(k - 1) % 4].second << endl;
   }
-  if (suma <= sumb)
-    cout << -1 << endl;
-  else
-    cout << coun << endl;
 }
 
 int32_t main() {

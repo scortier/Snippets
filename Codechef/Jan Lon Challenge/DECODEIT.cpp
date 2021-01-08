@@ -1,7 +1,7 @@
 
-// Problem: Fair Elections
+// Problem: Encoded String
 // Contest: CodeChef - January Challenge 2021 Division 3
-// URL: https://www.codechef.com/JAN21C/problems/FAIRELCT
+// URL: https://www.codechef.com/JAN21C/problems/DECODEIT
 // Memory Limit: 256 MB
 // Time Limit: 1000 ms
 // Powered by CP Editor (https://github.com/cpeditor/cpeditor)
@@ -35,57 +35,34 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-/*
+
 void solve() {
-  int n, m;
-  cin >> n >> m;
-  int a[n], b[m];
-  int s1 = 0, s2 = 0;
-  fl(i, 0, n) cin >> a[i], s1 += a[i];
-  fl(i, 0, m) cin >> b[i], s2 += b[i];
-  sort(a, a + n);
-  sort(b, b + m, greater<int>());
-  int i = 0, cnt = 0;
-  fl(i, 0, n) if (s2 >= s1) {
-    s1 = s1 - a[i] + b[i];
-    s2 = s2 + a[i] - b[i];
-    i++;
-
-    cnt++;
-    // pr(s1);
-  }
-  if (s2 >= s1)
-    pr(-1);
-  else
-    pr(cnt);
-  // pr(cnt);
-}*/
-void solve() {
-  int n, m;
-  cin >> n >> m;
-  vector<int> a(n), b(m);
-
-  for (int i = 0; i < n; i++) cin >> a[i];
-
-  for (int i = 0; i < m; i++) cin >> b[i];
-  int suma = accumulate(a.begin(), a.end(), 0);
-  int sumb = accumulate(b.begin(), b.end(), 0);
-
-  sort(a.begin(), a.end());
-  sort(b.begin(), b.end(), greater<int>());
-  int coun = 0;
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+  string result;
+  vector<char> v{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+                 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
+  int l = 0, r = v.size() - 1;
   for (int i = 0; i < n; i++) {
-    if (suma <= sumb) {
-      suma = suma - a[i] + b[i];
-      sumb = sumb - b[i] + a[i];
-
-      coun++;
+    if ((i + 1) % 4 == 0) {
+      if (s[i] == '1')
+        result += v[l + 1];
+      else
+        result += v[l];
+      l = 0;
+      r = v.size() - 1;
+    } else {
+      int m = (l + r) / 2;
+      if (s[i] == '1') {
+        l = m + 1;
+      } else {
+        r = m;
+      }
     }
   }
-  if (suma <= sumb)
-    cout << -1 << endl;
-  else
-    cout << coun << endl;
+  cout << result << endl;
 }
 
 int32_t main() {
