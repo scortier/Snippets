@@ -34,6 +34,16 @@
 #define mp(a, b) make_pair(a, b)
 #define float long long double
 #define pb push_back
+#define ll int
+#define endl '\n'
+#define vi vector<ll>
+#define pii pair<ll, ll>
+#define pb push_back
+#define fi first
+#define se second
+#define all(x) x.begin(), x.end()
+#define fill(a, b) memset(a, b, sizeof(a))
+#define setbits(x) __builtin_popcountll(x)
 #define print(arr, s, e)            \
   f(i, s, e) cout << arr[i] << " "; \
   endl;
@@ -53,50 +63,46 @@ void lage_rho() {
 }
 // /**********=============########################============***********/
 
-ll dp[4020][4020];
-ll pref[4020];
-
-ll Dfn(ll idx, ll taken, ll n, ll k, vll &arr) {
-  if (taken >= k and (pref[idx] - taken >= k))
-    return 0;
-  else if (idx >= n)
-    return 1e10;
-  else if (dp[idx][taken] != -1)
-    return dp[idx][taken];
-
-  ll c1 = Dfn(idx + 1, min(taken + arr[idx], pref[idx] - taken), n, k, arr);
-  ll c2 = Dfn(idx + 1, min(pref[idx] - taken + arr[idx], taken), n, k, arr);
-  return dp[idx][taken] = 1 + min(c1, c2);
-}
-ll givemedp(vll &arr, ll n, ll k) {
-  f(i, 0, n / 2) swap(arr[i], arr[n - i - 1]);
-  cf(i, 0, n + 10) {
-    pref[i] = 0;
-    cf(j, 0, k + 10) dp[i][j] = -1;
+const ll N = 4e3 + 4;
+ll n, k, a[N], pre[N], dp[N][N];
+ll call(ll i, ll j) {
+  if (j >= k) {
+    ll temp = j + k;
+    if ((pre[i - 1] - j) >= k) return i - 1;
+    ll p = lower_bound(pre + 1, pre + n + 1, temp) - pre;
+    return p;
   }
-  cf(i, 1, n) pref[i] = pref[i - 1] + arr[i - 1];
-  ll ans = Dfn(0, 0, n, k, arr);
-  return ans > 1e9 ? -1 : ans;
+  if (i == n + 1) return n + 1;
+  if (dp[i][j] != -1) return dp[i][j];
+  ll rtn = n + 1;
+  rtn = min(rtn, call(i + 1, j + a[i]));
+  rtn = min(rtn, call(i + 1, j));
+  return dp[i][j] = rtn;
 }
-void solve() {
-  ll n, k;
-  cin >> n >> k;
-  vll arr(n, 0);
-  takeINP(arr, n);
-  sort(all(arr));
-  if (n == 1) {
-    cout << "-1" << endl;
-    return;
-  }
-  if (n == 8 and k == 10) {
-    cout << 4 << endl;
-    return;
-  }
-  cout << givemedp(arr, n, k) << endl;
-}
-
-int32_t main() {
+int main() {
   lage_rho();
-  test solve();
+  ll t;
+  cin >> t;
+  while (t--) {
+    cin >> n >> k;
+    for (ll i = 1; i <= n; i++) {
+      cin >> a[i];
+      if (a[i] > k) a[i] = k;
+    }
+    sort(a + 1, a + n + 1);
+    reverse(a + 1, a + n + 1);
+    pre[0] = 0;
+    for (ll i = 1; i <= n; i++) pre[i] = a[i] + pre[i - 1];
+    for (ll i = 1; i <= n; i++) {
+      for (ll j = 0; j <= k; j++) {
+        dp[i][j] = -1;
+      }
+    }
+    ll ans = call(1, 0);
+    if (ans == (n + 1)) {
+      cout << -1 << endl;
+    } else
+      cout << ans << endl;
+  }
   return 0;
 }

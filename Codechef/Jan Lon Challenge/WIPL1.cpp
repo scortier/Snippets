@@ -69,7 +69,8 @@ void solve() {
       return;
     }
     // exact possible case
-    else if (a[0] == k) {
+    // else if (a[0] == k) {
+    else {
       pr(n);
     }
 

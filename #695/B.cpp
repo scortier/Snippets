@@ -62,9 +62,9 @@ void solve() {
   fl(i, 1, n + 1) a[i] = b[i];
   fl(j, 2, n) if (a[j + 1] > a[j] and a[j - 1] > a[j]) {
     if (a[j - 1] > a[j + 1])
-      a[j] = a[j + 1];
-    else
       a[j] = a[j - 1];
+    else
+      a[j] = a[j + 1];
     break;
   }
   // fl(i, 1, n + 1) cout << a[i] << " ";
