@@ -51,7 +51,7 @@ void solve() {
   int mx = 0, mn = MOD, sum = 0;
   for (int x = 1; x <= 40; x++) {
     for (int i = 1; i <= n; i++) {
-      sum += gcd(x, i);
+      sum += __gcd(x, i);
       if (sum > mx) {
         mx = sum;
         mn = x;
