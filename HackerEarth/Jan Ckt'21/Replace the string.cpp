@@ -1,10 +1,10 @@
 
-// Problem: The GCD function
+// Problem: Replace the strings
 // Contest: HackerEarth - January Circuits '21
 // URL:
-// https://www.hackerearth.com/challenges/competitive/january-circuits-21/algorithm/gcd-function-9fe49c14/
+// https://www.hackerearth.com/challenges/competitive/january-circuits-21/algorithm/make-them-equal-ac0bab4a/
 // Memory Limit: 256 MB
-// Time Limit: 1000 ms
+// Time Limit: 2000 ms
 // Powered by CP Editor (https://github.com/cpeditor/cpeditor)
 
 // Handle: Scortier (Aditya Singh Sisodiya)
@@ -16,7 +16,6 @@ using namespace std;
   cin >> tt; \
   while (tt--)
 #define ll long long int
-#define int ll
 #define fl(i, a, b) for (int i = a; i < b; i++)
 #define bfl(i, a, b) for (int i = b - 1; i >= a; i--)
 #define pb push_back
@@ -37,31 +36,26 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-int gcd(int a, int b) {
-  if (a == 0) return b;
-  if (b == 0) return a;
-  if (a == b) return a;
-  if (a > b)
-    return gcd(a - b, b);
-  else
-    return gcd(a, b - a);
-}
+
 void solve() {
   int n;
   cin >> n;
-  int mx = 0, mn = MOD, sum = 0;
-  for (int x = 1; x <= 9000; x++) {
-    for (int i = 1; i <= n; i++) {
-      sum += __gcd(x, i);
-    }
-    if (sum > mx) {
-      mx = sum;
-      mn = x;
-    }
-    sum = 0;
-  }
+  string s1, s2;
+  cin >> s1 >> s2;
+  map<char, int> m1, m2;
+  for (int i = 0; i < n; i++) {
+    if (s1[i] != '?') m1[s1[i]]++;
 
-  cout << mx << " " << mn << endl;
+    if (s2[i] != '?') m2[s2[i]]++;
+  }
+  int coun = 0;
+  for (char i = 'a'; i <= 'z'; i++) {
+    coun += abs(m1[i] - m2[i]);
+  }
+  if (coun > 2)
+    pr("NO");
+  else
+    pr("YES");
 }
 
 int32_t main() {
