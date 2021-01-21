@@ -16,7 +16,6 @@ using namespace std;
   cin >> tt; \
   while (tt--)
 #define ll long long int
-#define int ll
 #define fl(i, a, b) for (int i = a; i < b; i++)
 #define bfl(i, a, b) for (int i = b - 1; i >= a; i--)
 #define pb push_back
@@ -37,31 +36,42 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-int gcd(int a, int b) {
-  if (a == 0) return b;
-  if (b == 0) return a;
-  if (a == b) return a;
-  if (a > b)
-    return gcd(a - b, b);
-  else
-    return gcd(a, b - a);
-}
-void solve() {
-  int n;
-  cin >> n;
-  int mx = 0, mn = MOD, sum = 0;
-  for (int x = 1; x <= 9000; x++) {
-    for (int i = 1; i <= n; i++) {
-      sum += __gcd(x, i);
-    }
-    if (sum > mx) {
-      mx = sum;
-      mn = x;
-    }
-    sum = 0;
-  }
+// int gcd(int a, int b) {
+// if (a == 0) return b;
+// if (b == 0) return a;
+// if (a == b) return a;
+// if (a > b)
+// return gcd(a - b, b);
+// else
+// return gcd(a, b - a);
+// }
+// void solve() {
+// int n;
+// cin >> n;
+// int mx = 0, mn = MOD, sum = 0;
+// for (int x = 1; x <= 9000; x++) {
+// for (int i = 1; i <= n; i++) {
+// sum += __gcd(x, i);
+// }
+// if (sum > mx) {
+// mx = sum;
+// mn = x;
+// }
+// sum = 0;
+// }
+//
+// cout << mx << " " << mn << endl;
+// }
 
-  cout << mx << " " << mn << endl;
+void solve() {
+  ll n;
+  cin >> n;
+  ll x = 1;
+  for (ll i = 1; i <= n; i++) {
+    x = lcm(x, i);
+  }
+  ll r = n * (n + 1) / 2;
+  cout << r << " " << x << endl;
 }
 
 int32_t main() {

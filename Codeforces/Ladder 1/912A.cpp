@@ -1,10 +1,9 @@
 
-// Problem: Scoreboard queries
-// Contest: HackerEarth - January Circuits '21
-// URL:
-// https://www.hackerearth.com/challenges/competitive/january-circuits-21/algorithm/tournament-and-ranks-67cd4b7e/
+// Problem: A. Tricky Alchemy
+// Contest: Codeforces - Codeforces Round #456 (Div. 2)
+// URL: https://codeforces.com/contest/912/problem/A
 // Memory Limit: 256 MB
-// Time Limit: 2500 ms
+// Time Limit: 1000 ms
 // Powered by CP Editor (https://github.com/cpeditor/cpeditor)
 
 // Handle: Scortier (Aditya Singh Sisodiya)
@@ -16,6 +15,7 @@ using namespace std;
   cin >> tt; \
   while (tt--)
 #define ll long long int
+
 #define fl(i, a, b) for (int i = a; i < b; i++)
 #define bfl(i, a, b) for (int i = b - 1; i >= a; i--)
 #define pb push_back
@@ -38,37 +38,22 @@ void lage_rho() {
 /**********=============########################============***********/
 
 void solve() {
-  ll n, q;
-  cin >> n >> q;
-  vector<ll> v(n);
-  map<ll, ll> m;
-  for (ll i = 0; i < n; i++) {
-    cin >> v[i];
-    m[v[i]]++;
-  }
-  ll coun = 0;
-  for (auto j : m) {
-    coun += (j.second - 1);
-  }
-  while (q--) {
-    ll l, r;
-    cin >> l >> r;
-    coun -= (m[v[l - 1]] - 1);
-    m[v[l - 1]]--;
-    if (m[v[l - 1]] > 0) coun += (m[v[l - 1]] - 1);
-    v[l - 1] = r;
-    if (m[r] == 0)
-      m[r]++;
-    else {
-      m[r]++;
-      coun++;
-    }
-    cout << n + 1 - coun << endl;
-  }
+  ll A, B;
+  ll a, b;
+  ll sum = 0;
+  cin >> a >> b;
+  ll x, y, z;
+  cin >> x >> y >> z;
+  A = 2 * x + y;
+  B = 3 * z + y;
+  A = A < a ? 0 : (A - a);
+  B = B < b ? 0 : (B - b);
+  sum += (A + B);
+  cout << sum << endl;
 }
 
 int32_t main() {
   lage_rho();
-  test solve();
+  solve();
   return 0;
 }

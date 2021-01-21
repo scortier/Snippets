@@ -1,11 +1,9 @@
 
-// Problem: Scoreboard queries
-// Contest: HackerEarth - January Circuits '21
-// URL:
-// https://www.hackerearth.com/challenges/competitive/january-circuits-21/algorithm/tournament-and-ranks-67cd4b7e/
-// Memory Limit: 256 MB
-// Time Limit: 2500 ms
-// Powered by CP Editor (https://github.com/cpeditor/cpeditor)
+// Problem: A. Friends Meeting
+// Contest: Codeforces - Codeforces Round #468 (Div. 2, based on Technocup 2018
+// Final Round) URL: https://codeforces.com/contest/931/problem/A Memory Limit:
+// 256 MB Time Limit: 1000 ms Powered by CP Editor
+// (https://github.com/cpeditor/cpeditor)
 
 // Handle: Scortier (Aditya Singh Sisodiya)
 #include <bits/stdc++.h>
@@ -38,37 +36,17 @@ void lage_rho() {
 /**********=============########################============***********/
 
 void solve() {
-  ll n, q;
-  cin >> n >> q;
-  vector<ll> v(n);
-  map<ll, ll> m;
-  for (ll i = 0; i < n; i++) {
-    cin >> v[i];
-    m[v[i]]++;
-  }
-  ll coun = 0;
-  for (auto j : m) {
-    coun += (j.second - 1);
-  }
-  while (q--) {
-    ll l, r;
-    cin >> l >> r;
-    coun -= (m[v[l - 1]] - 1);
-    m[v[l - 1]]--;
-    if (m[v[l - 1]] > 0) coun += (m[v[l - 1]] - 1);
-    v[l - 1] = r;
-    if (m[r] == 0)
-      m[r]++;
-    else {
-      m[r]++;
-      coun++;
-    }
-    cout << n + 1 - coun << endl;
-  }
+  int a, b;
+  cin >> a >> b;
+  int l = abs(a - b);
+  int cnta = l / 2;
+  int cntb = l - (l / 2);
+  int ans = (cnta * (cnta + 1) / 2) + (cntb * (cntb + 1) / 2);
+  pr(ans);
 }
 
 int32_t main() {
   lage_rho();
-  test solve();
+  solve();
   return 0;
 }

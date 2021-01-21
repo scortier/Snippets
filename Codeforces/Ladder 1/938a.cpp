@@ -1,10 +1,9 @@
 
-// Problem: Scoreboard queries
-// Contest: HackerEarth - January Circuits '21
-// URL:
-// https://www.hackerearth.com/challenges/competitive/january-circuits-21/algorithm/tournament-and-ranks-67cd4b7e/
+// Problem: A. Word Correction
+// Contest: Codeforces - Educational Codeforces Round 38 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/938/problem/A
 // Memory Limit: 256 MB
-// Time Limit: 2500 ms
+// Time Limit: 1000 ms
 // Powered by CP Editor (https://github.com/cpeditor/cpeditor)
 
 // Handle: Scortier (Aditya Singh Sisodiya)
@@ -36,39 +35,25 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
+const string z = "aeiouy";
+
+bool vowel(char c) { return z.find(c) != -1; }
 
 void solve() {
-  ll n, q;
-  cin >> n >> q;
-  vector<ll> v(n);
-  map<ll, ll> m;
-  for (ll i = 0; i < n; i++) {
-    cin >> v[i];
-    m[v[i]]++;
-  }
-  ll coun = 0;
-  for (auto j : m) {
-    coun += (j.second - 1);
-  }
-  while (q--) {
-    ll l, r;
-    cin >> l >> r;
-    coun -= (m[v[l - 1]] - 1);
-    m[v[l - 1]]--;
-    if (m[v[l - 1]] > 0) coun += (m[v[l - 1]] - 1);
-    v[l - 1] = r;
-    if (m[r] == 0)
-      m[r]++;
-    else {
-      m[r]++;
-      coun++;
-    }
-    cout << n + 1 - coun << endl;
-  }
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+  cout << s[0];
+  fl(i, 1, n)
+
+          if (!vowel(s[i - 1]) or !vowel(s[i])) cout
+      << s[i];
+  cout << endl;
 }
 
 int32_t main() {
   lage_rho();
-  test solve();
+  solve();
   return 0;
 }
