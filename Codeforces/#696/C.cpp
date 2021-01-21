@@ -43,25 +43,26 @@ void reset(vector<int> a) {
   int r = a.size();
   for (int i = 0; i < r; i++) cnt[a[i]] = 0;
 }
-
 void solve() {
   int n;
   cin >> n;
   vector<int> a(2 * n);
-  fl(i, 0, 2 * n) cin >> a[i];
+  for (int i = 0; i < 2 * n; i++) {
+    cin >> a[i];
+  }
   sort(a.begin(), a.end());
   int t = 0;
-  fl(i, 0, 2 * n - 1) {
-    fl(j, 0, 2 * n) { cnt[a[j]]++; }
+  for (int i = 0; i < 2 * n - 1; i++) {
+    for (int j = 0; j < 2 * n; j++) cnt[a[j]]++;
     int j = 2 * n - 1;
     int x = a[i] + a[j];
-    vector<int> rem;
-    fl(op, 0, n) {
-      while (j > 0 and cnt[a[j]] == 0) j--;
-      rem.pb(a[j]);
-      rem.pb(x - a[i]);
+    vector<int> rm;
+    for (int op = 0; op < n; op++) {
+      while (j > 0 && cnt[a[j]] == 0) j--;
+      rm.push_back(a[j]);
+      rm.push_back(x - a[j]);
       cnt[a[j]]--, cnt[x - a[j]]--;
-      if (cnt[a[j]] < 0 or cnt[x - a[j]] < 0) {
+      if (cnt[a[j]] < 0 || cnt[x - a[j]] < 0) {
         cnt[a[j]] = 0;
         cnt[x - a[j]] = 0;
         break;
@@ -71,16 +72,56 @@ void solve() {
     }
     reset(a);
     if (t) {
-      pr("YES");
-      pr(rem[0] + rem[1]);
-      int p = rem.size();
-      fl(i, 0, p) { cout << rem[i] << "\n"[i % 2]; }
+      cout << "YES\n";
+      cout << rm[0] + rm[1] << "\n";
+      for (int i = 0; i < rm.size(); i++) {
+        cout << rm[i] << " \n"[i % 2];
+      }
       return;
     }
-    pr("NO");
-    reset(a);
   }
+  cout << "NO\n";
+  reset(a);
 }
+// void solve() {
+// int n;
+// cin >> n;
+// vector<int> a(2 * n);
+// fl(i, 0, 2 * n) cin >> a[i];
+// sort(a.begin(), a.end());
+// int t = 0;
+// fl(i, 0, 2 * n - 1) {
+// fl(j, 0, 2 * n) { cnt[a[j]]++; }
+// int j = 2 * n - 1;
+// int x = a[i] + a[j];
+// vector<int> rem;
+// fl(op, 0, n) {
+// while (j > 0 and cnt[a[j]] == 0) j--;
+// rem.pb(a[j]);
+// rem.pb(x - a[j]);
+// cnt[a[j]]--, cnt[x - a[j]]--;
+// if (cnt[a[j]] < 0 or cnt[x - a[j]] < 0) {
+// cnt[a[j]] = 0;
+// cnt[x - a[j]] = 0;
+// break;
+// }
+// x = max(x - a[j], a[j]);
+// if (op + 1 == n) t = 1;
+// }
+// reset(a);
+// if (t) {
+// pr("YES");
+// cout << rem[0] + rem[1] << endl;
+// int p = rem.size();
+// for (int i = 0; i < rem.size(); i++) {
+// cout << rem[i] << "\n"[i % 2];
+// }
+// return;
+// }
+// }
+// pr("NO");
+// reset(a);
+// }
 
 int32_t main() {
   lage_rho();
