@@ -28,7 +28,7 @@ using namespace std;
 #define prec(val, dig) fixed << setprecision(dig) << val
 #define pi pair<int, int>
 #define pr(gg) cout << gg << endl
-#define mk(arr, n, type) type *arr = new type[n];
+#define mk(arr, n, type) type* arr = new type[n];
 #define e endl
 void lage_rho() {
   ios_base::sync_with_stdio(0);
@@ -37,40 +37,22 @@ void lage_rho() {
 }
 /**********=============########################============***********/
 int minSwaps(string arr, int n) {
-  // Create an array of
-  // pairs where first
-  // element is array element
-  // and second element
-  // is position of first element
   pair<int, int> arrPos[n];
   for (int i = 0; i < n; i++) {
     arrPos[i].first = arr[i];
     arrPos[i].second = i;
   }
 
-  // Sort the array by array
-  // element values to
-  // get right position of
-  // every element as second
-  // element of pair.
   sort(arrPos, arrPos + n);
 
-  // To keep track of visited elements.
-  // Initialize
-  // all elements as not visited or false.
   vector<bool> vis(n, false);
 
-  // Initialize result
   int ans = 0;
 
   // Traverse array elements
   for (int i = 0; i < n; i++) {
-    // already swapped and corrected or
-    // already present at correct pos
     if (vis[i] || arrPos[i].second == i) continue;
 
-    // find out the number of  node in
-    // this cycle and add in ans
     int cycle_size = 0;
     int j = i;
     while (!vis[j]) {
@@ -96,28 +78,19 @@ void solve() {
   cin >> n;
   string a, b;
   cin >> a >> b;
-  if (a == b) {
+
+  sort(a.begin(), a.end(), greater<char>());
+  // sort(b.begin(), b.end(), greater<char>());
+  // int p = minSwaps(a, n);
+  int q = minSwaps(b, n);
+  // pr(p);
+  // pr(q);
+  if (q % 2 == 0)
     pr("YES");
-    return;
-  } else {
-    // string x=sort(a.begin(), a.end());
-    // string y=sort(b.begin(), b.end());
-    int p = minSwaps(a, n);
-    int q = minSwaps(b, n);
-    pr(p);
-    pr(q);
-    if (p == q)
-      pr("YES");
-    else
-      pr("NO");
-    // if (n == 2)
-    // pr("NO");
-    // else if (a == b)
-    // pr("YES");
-    // else
-    // pr("NO");
-  }
+  else
+    pr("NO");
 }
+
 int32_t main() {
   lage_rho();
   test solve();
