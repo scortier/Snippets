@@ -1,7 +1,7 @@
 
-// Problem: A. Remove Duplicates
-// Contest: Codeforces - Codeforces Round #481 (Div. 3)
-// URL: https://codeforces.com/contest/978/problem/A
+// Problem: A. Watching a movie
+// Contest: Codeforces - Codeforces Round #284 (Div. 2)
+// URL: https://codeforces.com/contest/499/problem/A
 // Memory Limit: 256 MB
 // Time Limit: 1000 ms
 // Powered by CP Editor (https://github.com/cpeditor/cpeditor)
@@ -35,31 +35,14 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-#define mii map<int, int>
+
 void solve() {
-  int n;
-  cin >> n;
-  mii cnt;
-
-  for (int i = 0; i < n; ++i) {
-    int x;
-    cin >> x;
-    cnt[x] = i;
-  }
-
-  mii ar;
-
-  for (auto el : cnt) ar[el.s] = el.f;
-
-  cout << ar.size() << '\n';
-
-  for (auto el : ar) cout << el.s << ' ';
-  // return 0;
+  int n, x;
+  cin >> n >> x;
 }
 
 int32_t main() {
   lage_rho();
-  // test
-  solve();
+  test solve();
   return 0;
 }
