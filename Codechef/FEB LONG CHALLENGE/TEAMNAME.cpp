@@ -35,96 +35,71 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-
-// void solve() {
-// int n;
-// cin >> n;
-// vector<string> a(n), b(n);
-// fl(i, 0, n) cin >> a[i], b[i] = a[i];
-// int ans = 0;
-// for (int i = 0; i < n; i++) {
-// for (int j = i; j < n; j++) {
-// string x = a[i];
-// string y = a[j];
-// swap(x[0], y[0]);
-// if (find(a.begin(), a.end(), x) != a.end() or
-// (find(a.begin(), a.end(), y) != a.end()))
-// continue;
-// else
-// ans += 2;
-// }
-// }
-// pr(ans);
-// }
-
-// void solve() {}
-void getIndex(vector<int> v, int K) {
-  auto it = find(v.begin(), v.end(), K);
-
-  // If element was found
-  if (it != v.end()) {
-    // calculating the index
-    // of K
-    int index = it - v.begin();
-    cout << index << endl;
-  } else {
-    // If the element is not
-    // present in the vector
-    cout << "-1" << endl;
+/*
+void solve() {
+  int n;
+  cin >> n;
+  vector<string> a(n);
+  fl(i, 0, n) cin >> a[i];
+  int ans = 0;
+  sort(a.begin(), a.end());
+  for (int i = 0; i < n; i++) {
+    for (int j = i + 1; j < n; j++) {
+      string x = a[i];
+      string y = a[j];
+      swap(x[0], y[0]);
+      if (x[0] == y[0] or x == y) {
+      } else if ((!(binary_search(a.begin(), a.end(), x))) and
+                 (!(binary_search(a.begin(), a.end(), y)))) {
+        ans += 2;
+      }
+      // if (find(a.begin(), a.end(), x) != a.end() or
+      // (find(a.begin(), a.end(), y) != a.end()))
+      // continue;
+      // else
+      // ans += 2;
+    }
   }
+  pr(ans);
 }
+*/
+
+int func(vector<char> a, vector<char> b) {
+  set<char> s(a.begin(), a.end());
+
+  int cnt = 0;
+  for (auto x : b) {
+    if (s.find(x) != s.end()) cnt++;
+  }
+  return cnt;
+}
+void solve() {
+  int n;
+  cin >> n;
+  vector<string> a(n);
+  map<string, vector<char>> mp;
+  string s;
+  fl(i, 0, n) {
+    cin >> s;
+    if (s.size() > 0) {
+      mp[s.substr(1)].pb(s[0]);
+    }
+  }
+
+  int ans = 0;
+  for (auto x : mp) {
+    for (auto y : mp) {
+      if (x.first != y.first) {
+        int tmp = func(x.second, y.second);
+        ans += (x.second.size() - tmp) * (y.second.size() - tmp);
+      }
+    }
+  }
+  pr(ans);
+}
+
 int32_t main() {
   lage_rho();
-  test {
-    int n;
-    cin >> n;
-    vector<string> v;
-    int count = 0;
-
-    for (int i = 0; i < n; i++) {
-      string ele;
-      cin >> ele;
-      v.pb(ele);
-    }
-    vector<int> a;
-    fl(i, 0, n) a.pb(i);
-    vector<int> pos(n);
-    fl(i, 0, n - 1) pos[i] = i;
-    vector<int> l;
-    fl(i, 0, n) l.pb(i);
-    vector<int> b(n);
-    fl(i, 0, n - 1) b[i] = a[i];
-    sort(b.begin(), b.end());
-
-    for (int i = 0; i < n; i++) {
-      for (int j = i + 1; j < n; j++) {
-        auto it = find(v.begin(), v.end(), K);
-        if (it != v.end()) {
-          int index = it - v.begin();
-          return index;
-        } else {
-          return -1;
-        }
-      }
-    }
-    // for (int p = 2; p * p < 10e+6; p++) {
-    // if (prime[p] == false) {
-    // for (int i = p * p; i <= 10e+6; i += p) prime[i] = true;
-    // }
-    // }
-    fl(j, 1, n - 1) {
-      int index = getIndex(a, b[j]);
-      int p = pos[getIndex(a, b[j - 1])];
-      int c = index;
-
-      while (c <= p) {
-        c += l[index];
-        pos[index] = c;
-        count++;
-      }
-    }
-    cout << count << endl;
-  }
-
+  test solve();
   return 0;
 }
