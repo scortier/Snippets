@@ -26,7 +26,15 @@ void moveZeroes(vector<int>& a) {
 }
 
 //3. Stable Partition (to impress interviewer)
+// include lambda function
 void moveZeroes(vector<int>& a)
 {
 	stale_partition(begin(a), end(a), [](int i) {return i;});
+}
+
+//4. to avoid lambda u can use
+
+void moveZeroes(vector<int>& a)
+{
+	stable_partition(rbegin(a), rend(a), logical_not<int>());
 }
