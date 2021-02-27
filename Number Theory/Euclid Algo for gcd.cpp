@@ -8,11 +8,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-gcd(int a, int b)
+int euclid_gcd(int a, int b)
 {
-	return b == 0 ? a : gcd(b, a % b);
+	return b == 0 ? a : euclid_gcd(b, a % b);
 }
 //gcd * lcm = a*b
+
+
 
 int32_t main()
 {
