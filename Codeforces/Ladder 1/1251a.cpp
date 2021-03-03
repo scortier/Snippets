@@ -1,6 +1,6 @@
-// Problem: A. Watching a movie
-// Contest: Codeforces - Codeforces Round #284 (Div. 2)
-// URL: https://codeforces.com/contest/499/problem/A
+// Problem: A. Broken Keyboard
+// Contest: Codeforces - Educational Codeforces Round 75 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1251/problem/A
 // Memory Limit: 256 MB
 // Time Limit: 1000 ms
 
@@ -33,31 +33,27 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-
-int a, b;
+bool ans[26];
 void solve() {
-  int n, x;
-  cin >> n >> x;
-  int curr = 1;
-  int d = 0;
-  while (n--) {
-    cin >> a >> b;
-    while (curr + x <= a) {
-      curr += x;
-    }
-    while (curr < a) {
-      d++;
-      curr++;
-    }
-    d += (b - a + 1);
-    curr = b + 1;
+  string s;
+  cin >> s;
+
+  memset(ans, 0, sizeof(ans));
+
+  for (int i = 0; i < s.size(); i++) {
+    int j = i;
+    while (j + 1 < s.size() && s[j + 1] == s[i]) j++;
+    if ((j - i) % 2 == 0) ans[s[i] - 'a'] = true;
+    i = j;
   }
-  pr(d);
+
+  for (int i = 0; i < 26; i++)
+    if (ans[i]) cout << char('a' + i);
+  cout << endl;
 }
 
 int32_t main() {
   lage_rho();
-  // test
-  solve();
+  test solve();
   return 0;
 }
