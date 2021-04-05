@@ -1,8 +1,8 @@
-// Problem: A. Strange Table
-// Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// Problem: A. Alexey and Train
+// Contest: Codeforces - Codeforces Round #707 (Div. 2, based on Moscow Open
+// Olympiad in Informatics) URL: https://codeforces.com/contest/1501/problem/A
 // Memory Limit: 256 MB
-// Time Limit: 2000 ms
+// Time Limit: 1000 ms
 
 // Handle: Scortier (Aditya Singh Sisodiya)
 #include <bits/stdc++.h>
@@ -35,17 +35,22 @@ void lage_rho() {
 /**********=============########################============***********/
 
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  int n;
+  cin >> n;
+  int a[n + 1] = {}, b[n + 1] = {}, tm[n + 1] = {};
+  for (int i = 1; i <= n; i++) cin >> a[i] >> b[i];
+  for (int i = 1; i <= n; i++) cin >> tm[i];
+  int ans = 0;
+  int d[n + 1];
+  d[0] = 0;
+  for (int i = 1; i <= n; i++) {
+    int x = d[i - 1] + a[i] - b[i - 1] + tm[i];
+    d[i] = max(x + (b[i] - a[i] + 1) / 2, b[i]);
+    if (i == n) {
+      pr(x);
+      return;
+    }
+  }
 }
 
 int32_t main() {

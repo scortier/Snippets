@@ -1,7 +1,7 @@
-// Problem: A. Strange Table
-// Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
-// Memory Limit: 256 MB
+// Problem: A - Rotate
+// Contest: AtCoder - AtCoder Beginner Contest 197（Sponsored by Panasonic）
+// URL: https://atcoder.jp/contests/abc197/tasks/abc197_a
+// Memory Limit: 1024 MB
 // Time Limit: 2000 ms
 
 // Handle: Scortier (Aditya Singh Sisodiya)
@@ -35,21 +35,16 @@ void lage_rho() {
 /**********=============########################============***********/
 
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  string s;
+  cin >> s;
+  char a = s[0];
+  s.erase(s.begin() + 0);
+  s += a;
+  cout << s;
 }
 
 int32_t main() {
   lage_rho();
-  test solve();
+  solve();
   return 0;
 }

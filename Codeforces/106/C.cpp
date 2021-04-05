@@ -1,6 +1,6 @@
-// Problem: A. Strange Table
-// Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// Problem: C. Minimum Grid Path
+// Contest: Codeforces - Educational Codeforces Round 106 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1499/problem/C
 // Memory Limit: 256 MB
 // Time Limit: 2000 ms
 
@@ -34,19 +34,7 @@ void lage_rho() {
 }
 /**********=============########################============***********/
 
-void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
-}
+void solve() {}
 
 int32_t main() {
   lage_rho();

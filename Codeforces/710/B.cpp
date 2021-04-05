@@ -1,6 +1,6 @@
-// Problem: A. Strange Table
+// Problem: B. Partial Replacement
 // Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// URL: https://codeforces.com/contest/1506/problem/B
 // Memory Limit: 256 MB
 // Time Limit: 2000 ms
 
@@ -18,7 +18,7 @@ using namespace std;
 #define pb push_back
 #define mp make_pair
 #define f first
-#define s second
+#define ss second
 #define MOD 1000000007
 #define PI acos(-1.0)
 #define assign(x, val) memset(x, val, sizeof(x))
@@ -33,19 +33,21 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  int n, k;
+  int res = 1;
+  cin >> n >> k;
+  string s;
+  cin >> s;
+  int i = s.find_first_of('*');
+  while (1) {
+    int j = min(n - 1, i + k);
+    while (i < j and s[j] == '.') j--;
+    if (i == j) break;
+    res++;
+    i = j;
+  }
+  pr(res);
 }
 
 int32_t main() {

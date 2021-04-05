@@ -1,8 +1,8 @@
-// Problem: A. Strange Table
-// Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// Problem: A. Domino on Windowsill
+// Contest: Codeforces - Educational Codeforces Round 106 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1499/problem/A
 // Memory Limit: 256 MB
-// Time Limit: 2000 ms
+// Time Limit: 1000 ms
 
 // Handle: Scortier (Aditya Singh Sisodiya)
 #include <bits/stdc++.h>
@@ -35,17 +35,12 @@ void lage_rho() {
 /**********=============########################============***********/
 
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  int n, k1, k2, w, b;
+  cin >> n >> k1 >> k2 >> w >> b;
+  if (k1 + k2 >= 2 * w and (2 * n - (k1 + k2)) >= 2 * b and (w + b) <= 2 * n)
+    pr("YES");
+  else
+    pr("NO");
 }
 
 int32_t main() {

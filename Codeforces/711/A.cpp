@@ -1,8 +1,8 @@
-// Problem: A. Strange Table
-// Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// Problem: A. GCD Sum
+// Contest: Codeforces - CodeCraft-21 and Codeforces Round #711 (Div. 2)
+// URL: https://codeforces.com/contest/1498/problem/A
 // Memory Limit: 256 MB
-// Time Limit: 2000 ms
+// Time Limit: 1000 ms
 
 // Handle: Scortier (Aditya Singh Sisodiya)
 #include <bits/stdc++.h>
@@ -13,6 +13,7 @@ using namespace std;
   cin >> tt; \
   while (tt--)
 #define ll long long int
+#define int ll
 #define fl(i, a, b) for (int i = a; i < b; i++)
 #define bfl(i, a, b) for (int i = b - 1; i >= a; i--)
 #define pb push_back
@@ -33,19 +34,31 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-
+int getSum(int n) {
+  int sum = 0;
+  while (n != 0) {
+    sum = sum + n % 10;
+    n = n / 10;
+  }
+  return sum;
+}
+int gcd(int a, int b) {
+  if (b == 0) return a;
+  return gcd(b, a % b);
+}
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  int n;
+  cin >> n;
+  int z = gcd(n, getSum(n));
+  if (z <= 1) {
+    while (z <= 1) {
+      z = gcd(n, getSum(n));
+      n = n + 1;
+    }
+    pr(n - 1);
+    return;
+  } else
+    pr(n);
 }
 
 int32_t main() {

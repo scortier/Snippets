@@ -1,6 +1,6 @@
-// Problem: A. Strange Table
-// Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// Problem: B. Binary Removals
+// Contest: Codeforces - Educational Codeforces Round 106 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1499/problem/B
 // Memory Limit: 256 MB
 // Time Limit: 2000 ms
 
@@ -33,19 +33,17 @@ void lage_rho() {
   cout.tie(0);
 }
 /**********=============########################============***********/
-
+// last occur of 00 or first occur of 11 no ans exist
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
+  string s;
+  cin >> s;
 
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  int c0 = s.rfind("00");  // from backward
+  int c1 = s.find("11");
+  if (c0 > c1 and c0 != -1 and c1 != -1)
+    pr("NO");
+  else
+    pr("YES");
 }
 
 int32_t main() {

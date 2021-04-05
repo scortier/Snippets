@@ -1,6 +1,6 @@
-// Problem: A. Strange Table
+// Problem: C. Double-ended Strings
 // Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// URL: https://codeforces.com/contest/1506/problem/C
 // Memory Limit: 256 MB
 // Time Limit: 2000 ms
 
@@ -34,18 +34,29 @@ void lage_rho() {
 }
 /**********=============########################============***********/
 
+int func(string &s, string &t, int n, int m) {
+  int dp[n + 1][m + 1];
+  int res = 0;
+  fl(i, 0, n + 1) {
+    fl(j, 0, m + 1) {
+      if (i == 0 or j == 0)
+        dp[i][j] = 0;
+      else if (s[i - 1] == t[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+        res = max(res, dp[i][j]);
+      } else
+        dp[i][j] = 0;
+    }
+  }
+  return res;
+}
+
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  string s, t;
+  cin >> s >> t;
+  int n = s.size();
+  int m = t.size();
+  cout << n + m - 2 * func(s, t, n, m) << endl;
 }
 
 int32_t main() {

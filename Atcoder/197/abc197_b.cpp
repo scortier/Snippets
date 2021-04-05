@@ -1,7 +1,7 @@
-// Problem: A. Strange Table
-// Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
-// Memory Limit: 256 MB
+// Problem: B - Visibility
+// Contest: AtCoder - AtCoder Beginner Contest 197（Sponsored by Panasonic）
+// URL: https://atcoder.jp/contests/abc197/tasks/abc197_b
+// Memory Limit: 1024 MB
 // Time Limit: 2000 ms
 
 // Handle: Scortier (Aditya Singh Sisodiya)
@@ -35,21 +35,47 @@ void lage_rho() {
 /**********=============########################============***********/
 
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
-
-  x--;
-
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  int h, w, x, y;
+  cin >> h >> w >> x >> y;
+  char a[h][w];
+  int d = 0;
+  fl(i, 0, h) fl(j, 0, w) cin >> a[i][j];
+  for (int i = x - 1; i < h; i++) {
+    if (a[i][y - 1] == '#')
+      break;
+    else
+      d++;
+  }
+  // pr(d);
+  for (int i = x - 1; i >= 0; i--) {
+    if (a[i][y - 1] == '#')
+      break;
+    else
+      d++;
+  }
+  // pr(d);
+  int c = 0;
+  for (int i = y - 1; i < w; i++) {
+    if (a[x - 1][i] == '#') {
+      c++;
+      break;
+    } else
+      d++;
+  }
+  // pr(d);
+  // pr(c);
+  for (int i = y - 1; i >= 0; i--) {
+    if (a[x - 1][i] == '#')
+      break;
+    else
+      d++;
+  }
+  pr(d - 3);
 }
 
+void ff() {}
 int32_t main() {
   lage_rho();
-  test solve();
+  solve();
   return 0;
 }

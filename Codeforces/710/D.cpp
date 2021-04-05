@@ -1,6 +1,6 @@
-// Problem: A. Strange Table
+// Problem: D. Epic Transformation
 // Contest: Codeforces - Codeforces Round #710 (Div. 3)
-// URL: https://codeforces.com/contest/1506/problem/A
+// URL: https://codeforces.com/contest/1506/problem/D
 // Memory Limit: 256 MB
 // Time Limit: 2000 ms
 
@@ -35,17 +35,29 @@ void lage_rho() {
 /**********=============########################============***********/
 
 void solve() {
-  ll n, m, x;
-  cin >> n >> m >> x;
+  int n;
+  cin >> n;
+  map<int, int> mp;
+  fl(i, 0, n) {
+    int x;
+    cin >> x;
+    mp[x]++;
+  }
 
-  x--;
+  int mx = 0;
+  for (auto x : mp) mx = max(mx, x.second);
 
-  int i, j;
-
-  i = x % n;
-  j = x / n;
-
-  cout << (m * i) + j + 1 << "\n";
+  int mm = n / 2;
+  if (mx <= mm) {
+    {
+      if (n & 1)
+        pr(1);
+      else
+        pr(0);
+    }
+  } else {
+    pr(2 * mx - n);
+  }
 }
 
 int32_t main() {
