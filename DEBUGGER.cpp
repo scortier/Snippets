@@ -22,47 +22,81 @@ using namespace std;
 #define mk(arr, n, type) type *arr = new type[n];
 #define e endl
 void lage_rho() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 }
 /**********=============########################============***********/
 
 struct testcase {
-  int a, n, d;
+	int a, n, d;
 };
 int randomNumber(int a, int b) { return a + (rand() % b); }
 testcase generateTestCase() {
-  testcase randomTest;
-  randomTest.a = randomNumber(1, 100000);
-  randomTest.n = randomNumber(1, 100000);
-  randomTest.d = randomNumber(-100000, 100000);
+	testcase randomTest;
+	randomTest.a = randomNumber(1, 100000);
+	randomTest.n = randomNumber(1, 100000);
+	randomTest.d = randomNumber(-100000, 100000);
 }
 int bruteForce(testcase T) {
-  int ret;
-  // Brute
-  return ret;
+	int ret;
+	// Brute
+	return ret;
 }
 int optimizedSolution(testcase T) {
-  int ret;
-  // Kartik Bhaiya
-  return ret;
+	int ret;
+	// Kartik Bhaiya
+	return ret;
 }
 
 void debugger() {
-  testcase random = generateTestCase();
-  int ans1 = bruteForce(random);
-  int ans2 = optimizedSolution(random);
-  if (ans1 != ans2) {
-    cout << random.a;
-    return;
-  }
+	testcase random = generateTestCase();
+	int ans1 = bruteForce(random);
+	int ans2 = optimizedSolution(random);
+	if (ans1 != ans2) {
+		cout << random.a;
+		return;
+	}
 }
 
 void solve() {}
 
 int32_t main() {
-  lage_rho();
-  test solve();
-  return 0;
+	lage_rho();
+	test solve();
+	return 0;
+}
+
+
+
+int calculate(string s) {
+	stack<int> st;
+	char sign = '+';
+	int res = 0, curr_no = 0;
+	for (unsigned int i = 0; i < s.size(); i++) {
+		if (isdigit(s[i]))
+			curr_no = 10 * curr_no + s[i] - '0';
+		if (!isdigit(s[i]) && !isspace(s[i]) || i == s.size() - 1) {
+			if (sign == '-')
+				st.push(-curr_no);
+			else if (sign == '+')
+				st.push(curr_no);
+			else {
+				int num;
+				if (sign == '*' )
+					num = st.top() * curr_no;
+				else
+					num = st.top() / curr_no;
+				st.pop();
+				st.push(num);
+			}
+			sign = s[i];
+			curr_no = 0;
+		}
+	}
+	while (!st.empty()) {
+		res += st.top();
+		st.pop();
+	}
+	return res;
 }
